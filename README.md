@@ -10,12 +10,12 @@
 		- [Java](#java)
 		- [NetBeans](#netbeans)
 	- [Installing](#installing)
-		- [Create the project](#create-the-project)		
+		- [Create the project](#create-the-project)
+		- [Setup Project](#setup-project)
 		- [Setup Database](#setup-database)
-    - [Setup Project](#setup-project)
 		- [Setup JDBC](#setup-jdbc)
+		- [Setup Persistance](#setup-persistance)
 		- [Persistance Unit](#persistance-unit)
-- [Tools conf](#tools-conf)
 - [Authors](#authors)
 - [License](#license)
 
@@ -26,11 +26,11 @@ You need to :
 * NetBeans
 
 #### Java
-##### Resources
-- https://stackoverflow.com/questions/25289482/installing-jdk8-on-ubuntu-unable-to-locate-package-update-doesnt-fix/31869659#31869659
-- http://www.webupd8.org/2014/03/how-to-install-oracle-java-8-in-debian.html
-- https://netbeans.org/kb/docs/ide/java-db.html#registering
-- https://docs.oracle.com/netbeans/nb82/netbeans/NBDAG/work_app_servers.htm#NBDAG1687
+##### Ressources
+* [https://stackoverflow.com/questions/25289482/installing-jdk8-on-ubuntu-unable-to-locate-package-update-doesnt-fix/31869659#31869659](https://stackoverflow.com/questions/25289482/installing-jdk8-on-ubuntu-unable-to-locate-package-update-doesnt-fix/31869659#31869659)
+* [http://www.webupd8.org/2014/03/how-to-install-oracle-java-8-in-debian.html](http://www.webupd8.org/2014/03/how-to-install-oracle-java-8-in-debian.html)
+* [https://netbeans.org/kb/docs/ide/java-db.html#registering](https://netbeans.org/kb/docs/ide/java-db.html#registering)
+* [https://docs.oracle.com/netbeans/nb82/netbeans/NBDAG/work_app_servers.htm#NBDAG1687](https://docs.oracle.com/netbeans/nb82/netbeans/NBDAG/work_app_servers.htm#NBDAG1687)
 
 ##### Install
 ```bash
@@ -39,7 +39,7 @@ sudo aptitude install openjdk-8-jdk
 ```
 ```bash
 #Probably useless stuff
-#sudo apt-get purge openjdk-\*
+#sudo apt-get purge openjdk
 #sudo apt-get purge oracle-java8-installer
 #sudo apt-get purge oracle-java9-installer
 #sudo aptitude install libderby-java libderbyclient-java
@@ -50,40 +50,40 @@ sudo aptitude install openjdk-8-jdk
 ```
 
 #### NetBeans
-##### Resources
-- https://netbeans.org/downloads/
-- https://netbeans.org/community/releases/80/install.html#installation
+##### Ressources
+* [https://netbeans.org/downloads/](https://netbeans.org/downloads/)
+* [https://netbeans.org/community/releases/80/install.html#installation](https://netbeans.org/community/releases/80/install.html#installation)
 
 ##### Install
-- Go to https://netbeans.org/downloads/
-- Download `Java EE`
+* Go to [https://netbeans.org/downloads/](https://netbeans.org/downloads/)
+* Download `Java EE`
+
 ```bash
 cd ~
 mv Downloads/netbeans-8.2-javaee-linux.sh ./
 chmod +x ./netbeans-8.2-javaee-linux.sh
 # Select Glassfish AND Tomcat
 # For JDK installation path, select /usr/lib/jvm/java-8-openjdk-amd64
-./netbeans-8.2-javaee-linux.sh
+./netbeans-8.2-javaee-linux.sht
 ```
+
 ### Installing
 #### Create the project
-- File > New Project > Java > Java Application
-  - Project Name : 2017-2018-poo4-seance1
-  - Project Location : ~
-  - Project Folder : ~/2017-2018-poo4-seance1
-  - x Use dedicated ...
-  - Main class : centralellile._2017_2018.poo4.seance1.Main
+* Clone the repository in your local machine
+* Open NetBeans
+* File > Open Project > ${repo name}
+* [Open Project]
 
 #### Setup Database
-- Open Netbeans
-- Services > Databases > Java DB > Start Server
-- Services > Databases > Java DB > Create Database
-  - Database Name : database
-  - User Name : username
-  - Password : password
-  - Password : password
-- [OK]
-- Services > Databases > jdbc:derby... > connect
+* Open Netbeans
+* Services > Databases > Java DB > Start Server
+* Services > Databases > Java DB > Create Database
+	* Database Name : database
+	* User Name : username
+	* Password : password
+	* Password : password
+* [OK]
+* Services > Databases > jdbc:derby... > connect
 
 #### Setup Project
 * Open Netbeans
@@ -93,17 +93,26 @@ chmod +x ./netbeans-8.2-javaee-linux.sh
 * [OK]
 
 #### Setup JDBC
-- Projects > 2017-2018-poo4-seance1 > Librairies > Add Librairies
-  - [Import] > Java DB Driver
-  - [Add Library]
+* Open Netbeans
+* Projects > ${project name} > Librairies > Add Librairies
+	* [Import] > Java DB Driver
+	* [Add Library]
 
-#### Persistance Unit
-- centralellile._2017_2018.poo4.seance1 > new > other > Persistence > Persitence Unit > ...
-  - Pu name : 2017-2018-poo4-seance1-pu
-  - Database Connection : jdbc:derby...
+#### Setup Persistance
+* Open Netbeans
+* Projects > ${project name} > Librairies > Add Librairies
+	* [Import] > EclipseLink (JPA X.X)
+	* [Add Library]
 
-## Tools conf
-- [Use tabs](https://stackoverflow.com/questions/1949014/how-can-i-configure-netbeans-to-insert-tabs-instead-of-a-bunch-of-spaces)
+#### Setup Persistance Unit
+* Open Netbeans
+* [Open] META-INF > persistence.xml
+	* PU name : ${persistance name}
+	* Database Connection : jdbc:derby...
+	* Table Generation Strategy : Drop and create
+	* [Add] Properties > eclipselink.logging.level : INFO
+	* [Add] Properties > eclipselink.ddl-generation.ouput-mode : both
+	* [Add] Properties > eclipselink.ddl-generation : drop-and-create-tables
 
 ## Authors
 * [Loïc BOURGOIS](https://github.com/loicbourgois)
