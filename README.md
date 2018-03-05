@@ -2,7 +2,11 @@
 
 ## Description
 
-> Nothing
+> This TP was realized with JPA inheritance. It allows to illustrate the following notions :
+> * object-relational mapping
+> * JPA API (Java Persistence API)
+> * DAO design pattern (Data Access Object)
+> * Factory design pattern
 
 ## Table of contents
 - [Installation](#installation)
