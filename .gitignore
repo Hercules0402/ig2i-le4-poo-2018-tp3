@@ -23,3 +23,12 @@ hs_err_pid*
 
 # node repertory
 node_modules/
+
+#java repertory
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/bdd/
+/test/
