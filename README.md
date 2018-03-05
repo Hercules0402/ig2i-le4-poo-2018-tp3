@@ -2,7 +2,7 @@
 
 ## Description
 
-> 
+> Nothing
 
 ## Table of contents
 - [Installation](#installation)
