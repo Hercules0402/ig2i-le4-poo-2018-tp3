@@ -167,4 +167,41 @@ public class Vehicule implements Serializable {
 				+ "capacité utilisée : " + capaciteutilisee + " \n\tcoût : " + cout + "]";
 	}
 
+	/**
+	 * Permet d'ajouter un client.
+	 * @param c TODO
+	 * @return Boolean
+	 */
+	public boolean addClient(Client c) {
+		if (this.capaciteutilisee <= this.capacite) {
+			if ((this.capaciteutilisee + c.getDemand() <= this.capacite)) {
+				ArrayList clients = new ArrayList(this.ensClients);	
+				Point dernierPoint = null;
+				if (clients.size() > 0) {
+					dernierPoint = (Point) clients.get(clients.size() - 1);
+				}
+				else {
+					dernierPoint = this.ndepot;
+				}				
+				if (this.ensClients.add(c)) {
+					this.setCapaciteutilisee(this.getCapaciteutilisee() + c.getDemand());
+					this.setCout(this.getCout() + dernierPoint.getDistanceTo(c.getId()));
+					this.getNplanning().setCout(this.getNplanning().getCout() + 
+							dernierPoint.getDistanceTo(c.getId()));
+					c.setNvehicule(this);
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+	}
+
 }
