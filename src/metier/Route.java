@@ -113,7 +113,7 @@ public class Route implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Route n°" + id + "[distance : " + distance +" ]";
+		return "Route n°" + id + " [distance : " + distance +" ]";
 	}
 
 }

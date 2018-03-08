@@ -163,4 +163,16 @@ public abstract class Point implements Serializable {
 		return "Point n°" + id + "[x : " + x +"\n\ty : " + y + "]";
 	}
 
+	/**
+	 * Permet d'ajouter une destination.
+	 * @param p TODO
+	 * @param distance TODO
+	 * @return Boolean
+	 */
+	public boolean addDestination(Point p, double distance) {
+		Route route = new Route(distance,this,p);
+		if (this.ensRoutes.put(route.getNarrivee().getId(), route) == null) return false;
+		else return true;
+	}
+	
 }
