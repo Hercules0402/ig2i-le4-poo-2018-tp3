@@ -115,5 +115,18 @@ public class Planning implements Serializable {
 	public String toString() {
 		return "Planning n°" + id + " : coût => " + cout;
 	}
-	
+
+	/**
+	 * Permet d'ajouter un véhicule au planning.
+	 * @param v TODO
+	 * @return Boolean
+	 */
+	public boolean addVehicule(Vehicule v) {
+		if (this.ensVehicules.add(v)){
+			v.setNplanning(this);
+			return true;
+		}
+		else return false;
+	}
+
 }
