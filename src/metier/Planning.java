@@ -129,4 +129,18 @@ public class Planning implements Serializable {
 		else return false;
 	}
 
+	/**
+	 * Permet de mettre à jour la position d'un client.
+	 */
+	public void updatePositionClients() {
+		int i = 0;
+		for (Vehicule v : this.ensVehicules){ 
+			i = 0;
+			for (Client c : v.getEnsClients()) {
+				c.setPosition(i);
+				i++;
+			}
+		}
+	}
+
 }
