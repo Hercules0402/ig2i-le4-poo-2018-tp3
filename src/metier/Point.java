@@ -174,5 +174,15 @@ public abstract class Point implements Serializable {
 		if (this.ensRoutes.put(route.getNarrivee().getId(), route) == null) return false;
 		else return true;
 	}
-	
+
+	/**
+	 * Retourne la distance entre le point "this" et le point d'id key.
+	 * @param key  TODO
+	 * @return double
+	 */
+	public double getDistanceTo(int key) {
+		if (this.ensRoutes.containsKey(key)) return this.ensRoutes.get(key).getDistance();
+		else return Double.POSITIVE_INFINITY;
+	}
+
 }
