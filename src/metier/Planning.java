@@ -113,7 +113,14 @@ public class Planning implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Planning n°" + id + " : coût => " + cout;
+		String retour = "Planning n°" + id + " : coût => " + cout;
+		for (Vehicule v : this.ensVehicules) {
+			retour += "\n\t" + v.toString();
+			for (Client c : v.getEnsClients()) {
+				retour += "\n\t\t" + c.toString();
+			}
+		}
+		return retour;
 	}
 
 	/**
@@ -122,7 +129,7 @@ public class Planning implements Serializable {
 	 * @return Boolean
 	 */
 	public boolean addVehicule(Vehicule v) {
-		if (this.ensVehicules.add(v)){
+		if (this.ensVehicules.add(v)) {
 			v.setNplanning(this);
 			return true;
 		}
@@ -134,7 +141,7 @@ public class Planning implements Serializable {
 	 */
 	public void updatePositionClients() {
 		int i = 0;
-		for (Vehicule v : this.ensVehicules){ 
+		for (Vehicule v : this.ensVehicules) { 
 			i = 0;
 			for (Client c : v.getEnsClients()) {
 				c.setPosition(i);
