@@ -26,11 +26,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "VEHICULE")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Vehicule.findAll", query = "SELECT v FROM Vehicule v")
-	, @NamedQuery(name = "Vehicule.findById", query = "SELECT v FROM Vehicule v WHERE v.id = :id")
-	, @NamedQuery(name = "Vehicule.findByCout", query = "SELECT v FROM Vehicule v WHERE v.cout = :cout")
-	, @NamedQuery(name = "Vehicule.findByCapaciteutilisee", query = "SELECT v FROM Vehicule v WHERE v.capaciteutilisee = :capaciteutilisee")
-	, @NamedQuery(name = "Vehicule.findByCapacite", query = "SELECT v FROM Vehicule v WHERE v.capacite = :capacite")})
+	@NamedQuery(name = "Vehicule.findAll", query = "SELECT v FROM Vehicule v"),
+	@NamedQuery(name = "Vehicule.findById", query = "SELECT v FROM Vehicule v WHERE v.id = :id"),
+	@NamedQuery(name = "Vehicule.findByCout", query = "SELECT v FROM Vehicule v WHERE v.cout = :cout"),
+	@NamedQuery(name = "Vehicule.findByCapaciteutilisee", query = "SELECT v FROM Vehicule v WHERE v.capaciteutilisee = :capaciteutilisee"),
+	@NamedQuery(name = "Vehicule.findByCapacite", query = "SELECT v FROM Vehicule v WHERE v.capacite = :capacite")
+})
 
 public class Vehicule implements Serializable {
 
@@ -81,7 +82,9 @@ public class Vehicule implements Serializable {
 	public Vehicule(Integer id,Point depot,Integer capacite) {
 		this();
 		this.id = id;
-		if (capacite < 0) capacite = 0;
+		if (capacite < 0) {
+			capacite = 0;
+		}
 		this.capacite = capacite;
 		this.capaciteutilisee = 0;
 		this.cout = 0.0;
@@ -187,7 +190,7 @@ public class Vehicule implements Serializable {
 					this.setCapaciteutilisee(this.getCapaciteutilisee() + c.getDemand());
 					this.setCout(this.getCout() + dernierPoint.getDistanceTo(c.getId()));
 					this.getNplanning().setCout(this.getNplanning().getCout() + 
-							dernierPoint.getDistanceTo(c.getId()));
+						dernierPoint.getDistanceTo(c.getId()));
 					c.setNvehicule(this);
 					return true;
 				}

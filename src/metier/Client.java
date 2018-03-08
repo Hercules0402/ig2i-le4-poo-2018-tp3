@@ -19,10 +19,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "CLIENT")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Client.findAll", query = "SELECT c FROM Client c")
-	, @NamedQuery(name = "Client.findByDemand", query = "SELECT c FROM Client c WHERE c.demand = :demand")
-	, @NamedQuery(name = "Client.findByPosition", query = "SELECT c FROM Client c WHERE c.position = :position")
-	, @NamedQuery(name = "Client.findByNpoint", query = "SELECT c FROM Client c WHERE c.npoint = :npoint")})
+	@NamedQuery(name = "Client.findAll", query = "SELECT c FROM Client c"),
+	@NamedQuery(name = "Client.findByDemand", query = "SELECT c FROM Client c WHERE c.demand = :demand"),
+	@NamedQuery(name = "Client.findByPosition", query = "SELECT c FROM Client c WHERE c.position = :position"),
+	@NamedQuery(name = "Client.findByNpoint", query = "SELECT c FROM Client c WHERE c.npoint = :npoint")
+})
 
 public class Client extends Point implements Serializable {
 
@@ -86,7 +87,7 @@ public class Client extends Point implements Serializable {
 	@Override
 	public String toString() {
 		return "Client n°" + super.getId() + " [\n\t{ " + super.toString() +
-				" }\n\tdemande : " + demand + "\n\tposition : " + position + " ]";
+			" }\n\tdemande : " + demand + "\n\tposition : " + position + " ]";
 	}
 
 }

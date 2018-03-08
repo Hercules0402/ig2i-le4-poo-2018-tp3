@@ -10,7 +10,13 @@ import metier.Vehicule;
  * @author user
  */
 public class Test1 {
+
+	/**
+	 * TODO
+	 * @param args the command line arguments
+	 */
 	public static void main(String[] args) {
+		// TODO code application logic here
 		Depot d = new Depot(0, 0, 0);
 		Client c1 = new Client(1, 10, 10, 10);
 		Client c2 = new Client(2, -10, 10, 5);
@@ -41,4 +47,5 @@ public class Test1 {
 		// Vérifier cout total des véhicules
 		// Vérifier capacité utilisée des véhicules
 	}
+
 }

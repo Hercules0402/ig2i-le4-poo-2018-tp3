@@ -26,9 +26,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "PLANNING")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Planning.findAll", query = "SELECT p FROM Planning p")
-	, @NamedQuery(name = "Planning.findById", query = "SELECT p FROM Planning p WHERE p.id = :id")
-	, @NamedQuery(name = "Planning.findByCout", query = "SELECT p FROM Planning p WHERE p.cout = :cout")})
+	@NamedQuery(name = "Planning.findAll", query = "SELECT p FROM Planning p"),
+	@NamedQuery(name = "Planning.findById", query = "SELECT p FROM Planning p WHERE p.id = :id"),
+	@NamedQuery(name = "Planning.findByCout", query = "SELECT p FROM Planning p WHERE p.cout = :cout")
+})
 
 public class Planning implements Serializable {
 
@@ -62,7 +63,9 @@ public class Planning implements Serializable {
 	 */
 	public Planning(double cout) {
 		this();
-		if (cout < 0) cout = 0.0;
+		if (cout < 0) { 
+			cout = 0.0; 
+		}
 		this.cout = cout;
 	}
 
@@ -133,7 +136,9 @@ public class Planning implements Serializable {
 			v.setNplanning(this);
 			return true;
 		}
-		else return false;
+		else { 
+			return false; 
+		}
 	}
 
 	/**

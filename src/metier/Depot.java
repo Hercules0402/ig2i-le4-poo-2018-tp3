@@ -15,10 +15,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "DEPOT")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Depot.findAll", query = "SELECT d FROM Depot d")
-	, @NamedQuery(name = "Depot.findByNpoint", query = "SELECT d FROM Depot d WHERE d.npoint = :npoint")})
+	@NamedQuery(name = "Depot.findAll", query = "SELECT d FROM Depot d"),
+	@NamedQuery(name = "Depot.findByNpoint", query = "SELECT d FROM Depot d WHERE d.npoint = :npoint")
+})
 
-public class Depot extends Point implements Serializable{
+public class Depot extends Point implements Serializable {
 	/**
 	 * Constructeur par défault.
 	 */

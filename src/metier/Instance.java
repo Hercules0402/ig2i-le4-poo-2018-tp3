@@ -23,9 +23,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "INSTANCE")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Instance.findAll", query = "SELECT i FROM Instance i")
-	, @NamedQuery(name = "Instance.findById", query = "SELECT i FROM Instance i WHERE i.id = :id")
-	, @NamedQuery(name = "Instance.findByNom", query = "SELECT i FROM Instance i WHERE i.nom = :nom")})
+	@NamedQuery(name = "Instance.findAll", query = "SELECT i FROM Instance i"),
+	@NamedQuery(name = "Instance.findById", query = "SELECT i FROM Instance i WHERE i.id = :id"),
+	@NamedQuery(name = "Instance.findByNom", query = "SELECT i FROM Instance i WHERE i.nom = :nom")
+})
 
 public class Instance implements Serializable {
 
@@ -49,7 +50,7 @@ public class Instance implements Serializable {
 	private Set<Vehicule> vehiculeSet;
 
 	/**
-	 * Constructeur par défault
+	 * Constructeur par défault.
 	 */
 	public Instance() {
 		this.planningSet = new HashSet<>();

@@ -10,8 +10,6 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,8 +21,6 @@ import javax.persistence.MapKey;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -39,38 +35,39 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "POINT")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Point.findAll", query = "SELECT p FROM Point p")
-	, @NamedQuery(name = "Point.findById", query = "SELECT p FROM Point p WHERE p.id = :id")
-	, @NamedQuery(name = "Point.findByPointtype", query = "SELECT p FROM Point p WHERE p.pointtype = :pointtype")
-	, @NamedQuery(name = "Point.findByX", query = "SELECT p FROM Point p WHERE p.x = :x")
-	, @NamedQuery(name = "Point.findByY", query = "SELECT p FROM Point p WHERE p.y = :y")})
+	@NamedQuery(name = "Point.findAll", query = "SELECT p FROM Point p"),
+	@NamedQuery(name = "Point.findById", query = "SELECT p FROM Point p WHERE p.id = :id"),
+	@NamedQuery(name = "Point.findByPointtype", query = "SELECT p FROM Point p WHERE p.pointtype = :pointtype"),
+	@NamedQuery(name = "Point.findByX", query = "SELECT p FROM Point p WHERE p.x = :x"),
+	@NamedQuery(name = "Point.findByY", query = "SELECT p FROM Point p WHERE p.y = :y")
+})
 
 public abstract class Point implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
 	private Integer id;
-	
+
 	@Column(name = "POINTTYPE")
 	private Integer pointtype;
-	
+
 	@Column(name = "X")
 	private double x;
-	
+
     @Column(name = "Y")
 	private double y;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
 	@MapKey(name="narrivee")
 	private Map<Integer,Route> ensRoutes;
-		
+
 	@JoinColumn(name = "NINSTANCE", referencedColumnName = "ID")
     @ManyToOne
 	private Instance ninstance;
-	
+
 	@OneToMany(mappedBy = "ndepot")
 	private Set<Vehicule> vehiculeCollection;
 
@@ -171,8 +168,12 @@ public abstract class Point implements Serializable {
 	 */
 	public boolean addDestination(Point p, double distance) {
 		Route route = new Route(distance,this,p);
-		if (this.ensRoutes.put(route.getNarrivee().getId(), route) == null) return false;
-		else return true;
+		if (this.ensRoutes.put(route.getNarrivee().getId(), route) == null) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 
 	/**
@@ -181,8 +182,12 @@ public abstract class Point implements Serializable {
 	 * @return double
 	 */
 	public double getDistanceTo(int key) {
-		if (this.ensRoutes.containsKey(key)) return this.ensRoutes.get(key).getDistance();
-		else return Double.POSITIVE_INFINITY;
+		if (this.ensRoutes.containsKey(key)) {
+			return this.ensRoutes.get(key).getDistance();
+		}
+		else {
+			return Double.POSITIVE_INFINITY;
+		}
 	}
 
 }

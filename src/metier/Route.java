@@ -21,26 +21,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "ROUTE")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Route.findAll", query = "SELECT r FROM Route r")
-	, @NamedQuery(name = "Route.findById", query = "SELECT r FROM Route r WHERE r.id = :id")
-	, @NamedQuery(name = "Route.findByDistance", query = "SELECT r FROM Route r WHERE r.distance = :distance")})
+	@NamedQuery(name = "Route.findAll", query = "SELECT r FROM Route r"),
+	@NamedQuery(name = "Route.findById", query = "SELECT r FROM Route r WHERE r.id = :id"),
+	@NamedQuery(name = "Route.findByDistance", query = "SELECT r FROM Route r WHERE r.distance = :distance")
+})
 
 public class Route implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Integer id;
-	
+
 	@Column(name = "DISTANCE")	
 	private double distance;
-	
+
 	@JoinColumn(name = "NARRIVEE", referencedColumnName = "ID")
 	@ManyToOne(optional = false)
 	private Point narrivee;
-	
+
 	@JoinColumn(name = "NDEPART", referencedColumnName = "ID")
 	@ManyToOne(optional = false)
 	private Point ndepart;
