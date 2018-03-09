@@ -10,7 +10,7 @@
 	"devDependencies": {
 		"gulp": "^3.9.1",
 		"gulp-lintspaces": "^0.5.0",
-		"linteverything": "^0.9.2"
+		"linteverything": "latest"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",

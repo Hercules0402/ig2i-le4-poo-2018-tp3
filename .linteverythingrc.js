@@ -7,8 +7,6 @@ module.exports = {
 		'build',
 		'ig2i-le4-poo-2018-tp3.pdf',
 		'db_routage.sql',
-		'nbproject/project.xml',
-		'hopital/nbproject/build-impl.xml',
-		'hopital/build.xml'
+		'nbproject/project.xml'
 	]
 };
