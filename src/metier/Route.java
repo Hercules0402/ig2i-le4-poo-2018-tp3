@@ -21,9 +21,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "ROUTE")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Route.findAll", query = "SELECT r FROM Route r"),
-	@NamedQuery(name = "Route.findById", query = "SELECT r FROM Route r WHERE r.id = :id"),
-	@NamedQuery(name = "Route.findByDistance", query = "SELECT r FROM Route r WHERE r.distance = :distance")
+		@NamedQuery(name = "Route.findAll",
+			query = "SELECT r FROM Route r"),
+		@NamedQuery(name = "Route.findById",
+			query = "SELECT r FROM Route r WHERE r.id = :id"),
+		@NamedQuery(name = "Route.findByDistance",
+			query = "SELECT r FROM Route r WHERE r.distance = :distance")
 })
 
 public class Route implements Serializable {
@@ -35,7 +38,7 @@ public class Route implements Serializable {
 	@Column(name = "ID")
 	private Integer id;
 
-	@Column(name = "DISTANCE")	
+	@Column(name = "DISTANCE")
 	private double distance;
 
 	@JoinColumn(name = "NARRIVEE", referencedColumnName = "ID")
@@ -114,7 +117,7 @@ public class Route implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Route n°" + id + " [distance : " + distance +" ]";
+		return "Route n°" + id + " [distance : " + distance + " ]";
 	}
 
 }

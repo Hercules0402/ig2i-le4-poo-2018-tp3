@@ -26,27 +26,30 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "PLANNING")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Planning.findAll", query = "SELECT p FROM Planning p"),
-	@NamedQuery(name = "Planning.findById", query = "SELECT p FROM Planning p WHERE p.id = :id"),
-	@NamedQuery(name = "Planning.findByCout", query = "SELECT p FROM Planning p WHERE p.cout = :cout")
+		@NamedQuery(name = "Planning.findAll",
+			query = "SELECT p FROM Planning p"),
+		@NamedQuery(name = "Planning.findById",
+			query = "SELECT p FROM Planning p WHERE p.id = :id"),
+		@NamedQuery(name = "Planning.findByCout",
+			query = "SELECT p FROM Planning p WHERE p.cout = :cout")
 })
 
 public class Planning implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)   
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Integer id;
-	
+
 	@Column(name = "COUT")
 	private double cout;
-	
-	@JoinColumn(name = "NINSTANCE", referencedColumnName = "ID")	
+
+	@JoinColumn(name = "NINSTANCE", referencedColumnName = "ID")
 	@ManyToOne
 	private Instance ninstance;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "nplanning")
 	private Set<Vehicule> ensVehicules;
 
@@ -63,8 +66,8 @@ public class Planning implements Serializable {
 	 */
 	public Planning(double cout) {
 		this();
-		if (cout < 0) { 
-			cout = 0.0; 
+		if (cout < 0) {
+			cout = 0.0;
 		}
 		this.cout = cout;
 	}
@@ -135,9 +138,8 @@ public class Planning implements Serializable {
 		if (this.ensVehicules.add(v)) {
 			v.setNplanning(this);
 			return true;
-		}
-		else { 
-			return false; 
+		} else {
+			return false;
 		}
 	}
 
@@ -146,7 +148,7 @@ public class Planning implements Serializable {
 	 */
 	public void updatePositionClients() {
 		int i = 0;
-		for (Vehicule v : this.ensVehicules) { 
+		for (Vehicule v : this.ensVehicules) {
 			i = 0;
 			for (Client c : v.getEnsClients()) {
 				c.setPosition(i);

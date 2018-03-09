@@ -23,29 +23,32 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "INSTANCE")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Instance.findAll", query = "SELECT i FROM Instance i"),
-	@NamedQuery(name = "Instance.findById", query = "SELECT i FROM Instance i WHERE i.id = :id"),
-	@NamedQuery(name = "Instance.findByNom", query = "SELECT i FROM Instance i WHERE i.nom = :nom")
+		@NamedQuery(name = "Instance.findAll",
+			query = "SELECT i FROM Instance i"),
+		@NamedQuery(name = "Instance.findById",
+			query = "SELECT i FROM Instance i WHERE i.id = :id"),
+		@NamedQuery(name = "Instance.findByNom",
+			query = "SELECT i FROM Instance i WHERE i.nom = :nom")
 })
 
 public class Instance implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Integer id;
-	
+
 	@Column(name = "NOM")
 	private String nom;
-	
-	@OneToMany(mappedBy = "ninstance")	
+
+	@OneToMany(mappedBy = "ninstance")
 	private Set<Point> pointSet;
-	
+
 	@OneToMany(mappedBy = "ninstance")
 	private Set<Planning> planningSet;
-	
+
 	@OneToMany(mappedBy = "ninstance")
 	private Set<Vehicule> vehiculeSet;
 
@@ -57,7 +60,7 @@ public class Instance implements Serializable {
 		this.vehiculeSet = new HashSet<>();
 		this.pointSet = new HashSet<>();
 	}
-	
+
 	/**
 	 * Constructeur par données.
 	 * @param nom TODO

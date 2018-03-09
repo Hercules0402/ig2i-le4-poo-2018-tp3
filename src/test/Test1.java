@@ -12,7 +12,7 @@ import metier.Vehicule;
 public class Test1 {
 
 	/**
-	 * TODO
+	 * TODO.
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
@@ -38,9 +38,15 @@ public class Test1 {
 		Planning p = new Planning();
 		p.addVehicule(v1);
 		p.addVehicule(v2);
-		if(!v1.addClient(c1)) v2.addClient(c1);
-		if(!v1.addClient(c2)) v2.addClient(c2);
-		if(!v1.addClient(c3)) v2.addClient(c3);
+		if (!v1.addClient(c1)) {
+			v2.addClient(c1);
+		}
+		if (!v1.addClient(c2)) {
+			v2.addClient(c2);
+		}
+		if (!v1.addClient(c3)) {
+			v2.addClient(c3);
+		}
 		p.updatePositionClients();
 		System.out.println(p.toString());
 		// Afficher le planning avec ses véhicules et les clients sur les véhicules

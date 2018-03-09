@@ -30,16 +30,21 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author user
  */
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-@DiscriminatorColumn(name="POINTTYPE",discriminatorType = DiscriminatorType.INTEGER)
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "POINTTYPE", discriminatorType = DiscriminatorType.INTEGER)
 @Table(name = "POINT")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Point.findAll", query = "SELECT p FROM Point p"),
-	@NamedQuery(name = "Point.findById", query = "SELECT p FROM Point p WHERE p.id = :id"),
-	@NamedQuery(name = "Point.findByPointtype", query = "SELECT p FROM Point p WHERE p.pointtype = :pointtype"),
-	@NamedQuery(name = "Point.findByX", query = "SELECT p FROM Point p WHERE p.x = :x"),
-	@NamedQuery(name = "Point.findByY", query = "SELECT p FROM Point p WHERE p.y = :y")
+		@NamedQuery(name = "Point.findAll",
+			query = "SELECT p FROM Point p"),
+		@NamedQuery(name = "Point.findById",
+			query = "SELECT p FROM Point p WHERE p.id = :id"),
+		@NamedQuery(name = "Point.findByPointtype",
+			query = "SELECT p FROM Point p WHERE p.pointtype = :pointtype"),
+		@NamedQuery(name = "Point.findByX",
+			query = "SELECT p FROM Point p WHERE p.x = :x"),
+		@NamedQuery(name = "Point.findByY",
+			query = "SELECT p FROM Point p WHERE p.y = :y")
 })
 
 public abstract class Point implements Serializable {
@@ -47,25 +52,29 @@ public abstract class Point implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
 	private Integer id;
 
 	@Column(name = "POINTTYPE")
 	private Integer pointtype;
 
 	@Column(name = "X")
+	//CHECKSTYLE:OFF: MemberNameCheck
 	private double x;
+	//CHECKSTYLE:ON
 
-    @Column(name = "Y")
+	@Column(name = "Y")
+	//CHECKSTYLE:OFF: MemberNameCheck
 	private double y;
+	//CHECKSTYLE:ON
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
-	@MapKey(name="narrivee")
+	@MapKey(name = "narrivee")
 	private Map<Integer,Route> ensRoutes;
 
 	@JoinColumn(name = "NINSTANCE", referencedColumnName = "ID")
-    @ManyToOne
+	@ManyToOne
 	private Instance ninstance;
 
 	@OneToMany(mappedBy = "ndepot")
@@ -87,11 +96,11 @@ public abstract class Point implements Serializable {
 	 * @param x TODO
 	 * @param y TODO
 	 */
-	public Point(Integer id, double x, double y) {	
+	public Point(Integer id, double x, double y) {
 		this();
 		this.id = id;
 		this.x = x;
-		this.y = y;		
+		this.y = y;
 	}
 
 	public Integer getId() {
@@ -128,7 +137,7 @@ public abstract class Point implements Serializable {
 
 	public Map<Integer, Route> getEnsRoutes() {
 		return ensRoutes;
-	}	
+	}
 
 	@XmlTransient
 	public Set<Vehicule> getVehiculeCollection() {
@@ -157,7 +166,7 @@ public abstract class Point implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Point n°" + id + "[x : " + x +"\n\ty : " + y + "]";
+		return "Point n°" + id + "[x : " + x + "\n\ty : " + y + "]";
 	}
 
 	/**
@@ -170,8 +179,7 @@ public abstract class Point implements Serializable {
 		Route route = new Route(distance,this,p);
 		if (this.ensRoutes.put(route.getNarrivee().getId(), route) == null) {
 			return false;
-		}
-		else {
+		} else {
 			return true;
 		}
 	}
@@ -184,8 +192,7 @@ public abstract class Point implements Serializable {
 	public double getDistanceTo(int key) {
 		if (this.ensRoutes.containsKey(key)) {
 			return this.ensRoutes.get(key).getDistance();
-		}
-		else {
+		} else {
 			return Double.POSITIVE_INFINITY;
 		}
 	}

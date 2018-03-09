@@ -26,11 +26,16 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "VEHICULE")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Vehicule.findAll", query = "SELECT v FROM Vehicule v"),
-	@NamedQuery(name = "Vehicule.findById", query = "SELECT v FROM Vehicule v WHERE v.id = :id"),
-	@NamedQuery(name = "Vehicule.findByCout", query = "SELECT v FROM Vehicule v WHERE v.cout = :cout"),
-	@NamedQuery(name = "Vehicule.findByCapaciteutilisee", query = "SELECT v FROM Vehicule v WHERE v.capaciteutilisee = :capaciteutilisee"),
-	@NamedQuery(name = "Vehicule.findByCapacite", query = "SELECT v FROM Vehicule v WHERE v.capacite = :capacite")
+		@NamedQuery(name = "Vehicule.findAll",
+			query = "SELECT v FROM Vehicule v"),
+		@NamedQuery(name = "Vehicule.findById",
+			query = "SELECT v FROM Vehicule v WHERE v.id = :id"),
+		@NamedQuery(name = "Vehicule.findByCout",
+			query = "SELECT v FROM Vehicule v WHERE v.cout = :cout"),
+		@NamedQuery(name = "Vehicule.findByCapaciteutilisee",
+			query = "SELECT v FROM Vehicule v WHERE v.capaciteutilisee = :capaciteutilisee"),
+		@NamedQuery(name = "Vehicule.findByCapacite",
+			query = "SELECT v FROM Vehicule v WHERE v.capacite = :capacite")
 })
 
 public class Vehicule implements Serializable {
@@ -182,27 +187,23 @@ public class Vehicule implements Serializable {
 				Point dernierPoint = null;
 				if (clients.size() > 0) {
 					dernierPoint = (Point) clients.get(clients.size() - 1);
-				}
-				else {
+				} else {
 					dernierPoint = this.ndepot;
 				}
 				if (this.ensClients.add(c)) {
 					this.setCapaciteutilisee(this.getCapaciteutilisee() + c.getDemand());
 					this.setCout(this.getCout() + dernierPoint.getDistanceTo(c.getId()));
-					this.getNplanning().setCout(this.getNplanning().getCout() +
-						dernierPoint.getDistanceTo(c.getId()));
+					this.getNplanning().setCout(this.getNplanning().getCout()
+							+ dernierPoint.getDistanceTo(c.getId()));
 					c.setNvehicule(this);
 					return true;
-				}
-				else {
+				} else {
 					return false;
 				}
-			}
-			else {
+			} else {
 				return false;
 			}
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
