@@ -36,32 +36,32 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Vehicule implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Integer id;
-	
+
 	@Column(name = "COUT")
 	private double cout;
-	
+
 	@Column(name = "CAPACITEUTILISEE")
 	private Integer capaciteutilisee;
-	
+
 	@Column(name = "CAPACITE")
 	private Integer capacite;
-	
+
 	@OneToMany(mappedBy = "nvehicule")
 	private Set<Client> ensClients;
-	
+
 	@JoinColumn(name = "NINSTANCE", referencedColumnName = "ID")
 	@ManyToOne
 	private Instance ninstance;
-	
+
 	@JoinColumn(name = "NPLANNING", referencedColumnName = "ID")
 	@ManyToOne(optional = false)
 	private Planning nplanning;
-	
+
 	@JoinColumn(name = "NDEPOT", referencedColumnName = "ID")
 	@ManyToOne
 	private Point ndepot;
@@ -135,7 +135,7 @@ public class Vehicule implements Serializable {
 	public Planning getNplanning() {
 		return nplanning;
 	}
-	
+
 	public void setNplanning(Planning nplanning) {
 		this.nplanning = nplanning;
 	}
@@ -143,7 +143,7 @@ public class Vehicule implements Serializable {
 	public Point getNdepot() {
 		return ndepot;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hash = 0;
@@ -178,18 +178,18 @@ public class Vehicule implements Serializable {
 	public boolean addClient(Client c) {
 		if (this.capaciteutilisee <= this.capacite) {
 			if ((this.capaciteutilisee + c.getDemand() <= this.capacite)) {
-				ArrayList clients = new ArrayList(this.ensClients);	
+				ArrayList clients = new ArrayList(this.ensClients);
 				Point dernierPoint = null;
 				if (clients.size() > 0) {
 					dernierPoint = (Point) clients.get(clients.size() - 1);
 				}
 				else {
 					dernierPoint = this.ndepot;
-				}				
+				}
 				if (this.ensClients.add(c)) {
 					this.setCapaciteutilisee(this.getCapaciteutilisee() + c.getDemand());
 					this.setCout(this.getCout() + dernierPoint.getDistanceTo(c.getId()));
-					this.getNplanning().setCout(this.getNplanning().getCout() + 
+					this.getNplanning().setCout(this.getNplanning().getCout() +
 						dernierPoint.getDistanceTo(c.getId()));
 					c.setNvehicule(this);
 					return true;
