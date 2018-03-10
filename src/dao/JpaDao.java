@@ -6,6 +6,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -108,6 +109,21 @@ public abstract class JpaDao<T> implements DAO<T>{
 		Root<T> tacks = cq.from(this.entite);
 		cq.select(tacks);
 		return this.em.createQuery(cq).getResultList();
+	}
+
+	@Override
+	public boolean deleteAll() {
+		try {
+			CriteriaBuilder cb = em.getCriteriaBuilder();
+			CriteriaDelete<T> cd = cb.createCriteriaDelete(this.entite);
+			int nbDelete = em.createQuery(cd).executeUpdate();
+		}
+		catch (Exception e){
+			System.err.println(e.getMessage());
+			return false;
+		}
+		
+		return true;
 	}
 
 }
