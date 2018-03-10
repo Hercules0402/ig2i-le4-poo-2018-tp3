@@ -18,10 +18,14 @@ public abstract class JpaDao<T> implements DAO<T>{
 
     protected final static String PERSISTENCE_UNIT = "ig2i-le4-poo-2018-tp3PU";
 
+	protected Class<T> entite;
+
 	/**
-	 * Constructeur par défaut.
+	 * Constructeur par données.
+	 * @param entite
 	 */
-	public JpaDao() {
+	public JpaDao(Class<T> entite) {
+		this.entite = entite;
 		this.emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
 		this.em = this.emf.createEntityManager();
 	}
