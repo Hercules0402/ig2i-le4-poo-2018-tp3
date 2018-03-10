@@ -8,7 +8,7 @@ import metier.Depot;
  * @author user
  */
 public class JpaDepotDao extends JpaDao<Depot> implements DepotDao {
-	
+
 	/**
 	 * Constructeur par données.
 	 * @param entite TODO
