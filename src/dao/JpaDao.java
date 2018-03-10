@@ -1,9 +1,13 @@
 package dao;
 
+import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  * Représente un DAO utilisant comme source de données une bdd.
@@ -95,6 +99,15 @@ public abstract class JpaDao<T> implements DAO<T>{
 	@Override
 	public T find(Integer id) {
 		return this.em.find(this.entite, id);
+	}
+
+	@Override
+	public Collection<T> findAll() {
+		CriteriaBuilder cb = this.em.getCriteriaBuilder();
+		CriteriaQuery<T> cq = cb.createQuery(this.entite);
+		Root<T> tacks = cq.from(this.entite);
+		cq.select(tacks);
+		return this.em.createQuery(cq).getResultList();
 	}
 
 }
