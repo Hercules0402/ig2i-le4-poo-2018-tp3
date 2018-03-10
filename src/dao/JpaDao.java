@@ -27,7 +27,7 @@ public abstract class JpaDao<T> implements DAO<T>{
 
 	/**
 	 * Constructeur par données.
-	 * @param entite
+	 * @param entite TODO
 	 */
 	public JpaDao(Class<T> entite) {
 		this.entite = entite;

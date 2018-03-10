@@ -7,14 +7,14 @@ import javax.persistence.criteria.Root;
 import metier.Client;
 
 /**
- * Représente un DAO de type Clinet utilisant comme source de données une bdd.
+ * Représente un DAO de type Client utilisant comme source de données une bdd.
  * @author user
  */
 public class JpaClientDao extends JpaDao<Client> implements ClientDao {
 
 	/**
-	 * Constructeur par données
-	 * @param entite 
+	 * Constructeur par données.
+	 * @param entite TODO
 	 */
 	public JpaClientDao(Class<Client> entite) {
 		super(entite);
