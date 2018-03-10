@@ -10,11 +10,10 @@ import metier.Route;
 public class JpaRouteDao extends JpaDao<Route> implements RouteDao {
 	
 	/**
-	 * Contructeur par données
-	 * @param entite TODO
+	 * Contructeur par données.
 	 */
-	public JpaRouteDao(Class<Route> entite) {
-		super(entite);
+	public JpaRouteDao() {
+		super(Route.class);
 	}
 
 	@Override

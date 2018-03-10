@@ -11,10 +11,9 @@ public class JpaPlanningDao extends JpaDao<Planning> implements PlanningDao {
 	
 	/**
 	 * Constructeur par données.
-	 * @param entite TODO
 	 */
-	public JpaPlanningDao(Class<Planning> entite) {
-		super(entite);
+	public JpaPlanningDao() {
+		super(Planning.class);
 	}
 
 	@Override

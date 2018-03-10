@@ -13,11 +13,10 @@ import metier.Vehicule;
 public class JpaVehiculeDao extends JpaDao<Vehicule> implements VehiculeDao {
 
 	/**
-	 * Constrcuteur par données
-	 * @param entite TODO 
+	 * Constrcuteur par données 
 	 */
-	public JpaVehiculeDao(Class<Vehicule> entite) {
-		super(entite);
+	public JpaVehiculeDao() {
+		super(Vehicule.class);
 	}
 
 	@Override

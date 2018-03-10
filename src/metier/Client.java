@@ -64,6 +64,17 @@ public class Client extends Point implements Serializable {
 		this.demand = demand;
 	}
 
+	/**
+	 * Constructeur par données.
+	 * @param x TODO
+	 * @param y TODO
+	 * @param demand TODO
+	 */
+	public Client(double x, double y, int demand) {
+		super(x, y);
+		this.demand = demand;
+	}
+
 	public int getDemand() {
 		return demand;
 	}

@@ -11,10 +11,9 @@ public class JpaDepotDao extends JpaDao<Depot> implements DepotDao {
 
 	/**
 	 * Constructeur par données.
-	 * @param entite TODO
 	 */
-	public JpaDepotDao(Class<Depot> entite) {
-		super(entite);
+	public JpaDepotDao() {
+		super(Depot.class);
 	}
 
 	@Override

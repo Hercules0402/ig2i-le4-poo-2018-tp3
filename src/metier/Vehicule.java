@@ -96,6 +96,22 @@ public class Vehicule implements Serializable {
 		this.ndepot = depot;
 	}
 
+	/**
+	 * Constructeur par données.
+	 * @param depot TODO
+	 * @param capacite TODO
+	 */
+	public Vehicule(Point depot,Integer capacite) {
+		this();
+		if (capacite < 0) {
+			capacite = 0;
+		}
+		this.capacite = capacite;
+		this.capaciteutilisee = 0;
+		this.cout = 0.0;
+		this.ndepot = depot;
+	}
+
 	public Integer getId() {
 		return id;
 	}

@@ -103,6 +103,17 @@ public abstract class Point implements Serializable {
 		this.y = y;
 	}
 
+	/**
+	 * Constructeur par données.
+	 * @param x TODO
+	 * @param y TODO
+	 */
+	public Point(double x, double y) {
+		this();
+		this.x = x;
+		this.y = y;
+	}
+
 	public Integer getId() {
 		return id;
 	}

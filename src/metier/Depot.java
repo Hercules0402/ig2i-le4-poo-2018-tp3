@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Entité représentant un point.
- * @author seb
+ * @author user
  */
 @Entity
 @Table(name = "DEPOT")
@@ -38,6 +38,15 @@ public class Depot extends Point implements Serializable {
 	 */
 	public Depot(Integer id,double x, double y) {
 		super(id, x, y);
+	}
+
+	/**
+	 * Constructeur par données.
+	 * @param x TODO
+	 * @param y TODO
+	 */
+	public Depot(double x, double y) {
+		super(x, y);
 	}
 
 	@Override

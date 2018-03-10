@@ -14,10 +14,9 @@ public class JpaClientDao extends JpaDao<Client> implements ClientDao {
 
 	/**
 	 * Constructeur par données.
-	 * @param entite TODO
 	 */
-	public JpaClientDao(Class<Client> entite) {
-		super(entite);
+	public JpaClientDao() {
+		super(Client.class);
 	}
 
 	@Override
