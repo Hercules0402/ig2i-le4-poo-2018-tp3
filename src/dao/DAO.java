@@ -9,7 +9,7 @@ import java.util.Collection;
  */
 //CHECKSTYLE:OFF: AbbreviationAsWordInNameCheck
 public interface DAO<T> {
-//CHECKSTYLE:ON
+	//CHECKSTYLE:ON
 	/**
 	 * Méthode permettant de créer un objet.
 	 * @param obj TODO

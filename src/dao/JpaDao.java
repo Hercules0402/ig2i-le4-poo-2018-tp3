@@ -44,8 +44,7 @@ public abstract class JpaDao<T> implements DAO<T> {
 			et.begin();
 			em.persist(obj);
 			et.commit();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -61,8 +60,7 @@ public abstract class JpaDao<T> implements DAO<T> {
 			et.begin();
 			em.merge(obj);
 			et.commit();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -78,8 +76,7 @@ public abstract class JpaDao<T> implements DAO<T> {
 			et.begin();
 			em.remove(obj);
 			et.commit();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -121,8 +118,7 @@ public abstract class JpaDao<T> implements DAO<T> {
 			et.begin();
 			int nbDelete = em.createQuery(cd).executeUpdate();
 			et.commit();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
