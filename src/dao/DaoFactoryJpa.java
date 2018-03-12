@@ -23,7 +23,7 @@ public class DaoFactoryJpa extends DaoFactory {
 
 	@Override
 	public VehiculeDao getVehiculeDao() {
-	return JpaVehiculeDao.getInstance();
+		return JpaVehiculeDao.getInstance();
 	}
 
 	@Override

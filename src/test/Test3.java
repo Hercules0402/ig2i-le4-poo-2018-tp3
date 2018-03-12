@@ -37,7 +37,7 @@ public class Test3 {
 		}
 		planningManager.create(p);
 		for (Vehicule v : vehiculeManager.findAll()) {
-		System.out.println(v);
+			System.out.println(v);
 		}
 	}
 

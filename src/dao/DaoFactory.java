@@ -11,7 +11,7 @@ public abstract class DaoFactory {
 	 * @param type TODO.
 	 * @return DaoFactory
 	 */
-	public static DaoFactory getDaoFactory (PersistenceType type) {
+	public static DaoFactory getDaoFactory(PersistenceType type) {
 		if (type.equals(PersistenceType.JPA)) {
 			return new DaoFactoryJpa();
 		}
