@@ -9,11 +9,24 @@ import metier.Route;
  */
 public class JpaRouteDao extends JpaDao<Route> implements RouteDao {
 
+	private static JpaRouteDao instance;
+
 	/**
 	 * Constrcuteur par défault.
 	 */
-	public JpaRouteDao() {
+	private JpaRouteDao() {
 		super(Route.class);
+	}
+
+	/**
+	 * Retourne une instance de JpaRouteDao.
+	 * @return JpaRouteDao
+	 */
+	public static JpaRouteDao getInstance() {
+		if (instance == null) {
+			instance = new JpaRouteDao();
+		}
+		return instance;
 	}
 
 	@Override
