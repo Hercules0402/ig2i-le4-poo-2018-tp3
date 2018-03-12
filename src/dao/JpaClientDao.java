@@ -72,8 +72,8 @@ public class JpaClientDao extends JpaDao<Client> implements ClientDao {
 		CriteriaBuilder cb = super.em.getCriteriaBuilder();
 		CriteriaQuery<Client> cq = cb.createQuery(Client.class);
 		Root<Client> tasks = cq.from(Client.class);
-		cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("NVEHICULE")),
-				cb.isNotEmpty(tasks.get("NVEHICULE"))));
+		cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("nvehicule")),
+				cb.isNotEmpty(tasks.get("nvehicule"))));
 		return super.em.createQuery(cq).getResultList();
 	}
 

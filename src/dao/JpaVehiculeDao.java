@@ -72,8 +72,8 @@ public class JpaVehiculeDao extends JpaDao<Vehicule> implements VehiculeDao {
 		CriteriaBuilder cb = super.em.getCriteriaBuilder();
 		CriteriaQuery<Vehicule> cq = cb.createQuery(Vehicule.class);
 		Root<Vehicule> tasks = cq.from(Vehicule.class);
-		cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("NPLANNING")),
-				cb.isNotEmpty(tasks.get("NPLANNING"))));
+		cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("nplanning")),
+				cb.isNotEmpty(tasks.get("nplanning"))));
 		return super.em.createQuery(cq).getResultList();
 	}
 
