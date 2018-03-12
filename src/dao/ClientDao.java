@@ -7,7 +7,7 @@ import metier.Client;
  * Interface générique représentant un DAO de type Client.
  * @author user
  */
-public interface ClientDao extends DAO<Client>{
+public interface ClientDao extends DAO<Client> {
 
 	/**
 	 * Méthode permettant de renvoyer tous les clients qui ne sont pas encore

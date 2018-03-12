@@ -15,13 +15,13 @@ import javax.persistence.criteria.Root;
  * @author user
  * @param <T> TODO
  */
-public abstract class JpaDao<T> implements DAO<T>{
+public abstract class JpaDao<T> implements DAO<T> {
 
 	protected EntityManagerFactory emf;
 
 	protected EntityManager em;
 
-    protected final static String PERSISTENCE_UNIT = "ig2i-le4-poo-2018-tp3PU";
+	protected final static String PERSISTENCE_UNIT = "ig2i-le4-poo-2018-tp3PU";
 
 	protected Class<T> entite;
 
@@ -40,14 +40,14 @@ public abstract class JpaDao<T> implements DAO<T>{
 		EntityTransaction et = this.em.getTransaction();
 
 		try {
-            et.begin();
-            em.persist(obj);
-            et.commit();
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+			et.begin();
+			em.persist(obj);
+			et.commit();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 
 		return true;
 	}
@@ -57,14 +57,14 @@ public abstract class JpaDao<T> implements DAO<T>{
 		EntityTransaction et = this.em.getTransaction();
 
 		try {
-            et.begin();
-            em.merge(obj);
-            et.commit();
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+			et.begin();
+			em.merge(obj);
+			et.commit();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 
 		return true;
 	}
@@ -74,25 +74,25 @@ public abstract class JpaDao<T> implements DAO<T>{
 		EntityTransaction et = this.em.getTransaction();
 
 		try {
-            et.begin();
-            em.remove(obj);
-            et.commit();
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+			et.begin();
+			em.remove(obj);
+			et.commit();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 
 		return true;
 	}
 
 	@Override
 	public void close() {
-		if(this.emf != null) {
+		if (this.emf != null) {
 			this.emf.close();
 		}
 
-		if(this.em != null) {
+		if (this.em != null) {
 			this.em.close();
 		}
 	}
@@ -121,7 +121,7 @@ public abstract class JpaDao<T> implements DAO<T>{
 			int nbDelete = em.createQuery(cd).executeUpdate();
 			et.commit();
 		}
-		catch (Exception e){
+		catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}

@@ -1,7 +1,19 @@
 package test;
 
-import dao.*;
-import metier.*;
+import dao.ClientDao;
+import dao.DepotDao;
+import dao.JpaClientDao;
+import dao.JpaDepotDao;
+import dao.JpaPlanningDao;
+import dao.JpaVehiculeDao;
+import dao.PlanningDao;
+import dao.VehiculeDao;
+import metier.Client;
+import metier.Depot;
+import metier.Planning;
+import metier.Vehicule;
+
+
 
 /**
  * Jeux de tests 2.
@@ -24,18 +36,24 @@ public class Test2 {
 		Client c3 = new Client(10, -10, 10);
 		ClientDao clientManager = new JpaClientDao();
 		clientManager.deleteAll();
-		clientManager.create(c1); clientManager.create(c2);
+		clientManager.create(c1); 
+		clientManager.create(c2);
 		clientManager.create(c3);
-		d.addDestination(c1, 14.1); d.addDestination(c2, 14.1);
+		d.addDestination(c1, 14.1); 
+		d.addDestination(c2, 14.1);
 		d.addDestination(c3, 14.1);
-		c1.addDestination(d, 14.1); c1.addDestination(c2, 20);
+		c1.addDestination(d, 14.1); 
+		c1.addDestination(c2, 20);
 		c1.addDestination(c3, 20);
-		c2.addDestination(d, 14.1); c2.addDestination(c1, 20);
+		c2.addDestination(d, 14.1); 
+		c2.addDestination(c1, 20);
 		c2.addDestination(c3, 20);
-		c3.addDestination(d, 14.1); c3.addDestination(c1, 20);
+		c3.addDestination(d, 14.1); 
+		c3.addDestination(c1, 20);
 		c3.addDestination(c2, 20);
 		depotManager.update(d);
-		clientManager.update(c1); clientManager.update(c2);
+		clientManager.update(c1); 
+		clientManager.update(c2);
 		clientManager.update(c3);
 		Vehicule v1 = new Vehicule(d, 15);
 		Vehicule v2 = new Vehicule(d, 15);
