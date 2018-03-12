@@ -69,7 +69,7 @@ public abstract class Point implements Serializable {
 	private double y;
 	//CHECKSTYLE:ON
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ndepart")
 	@MapKey(name = "narrivee")
 	private Map<Integer,Route> ensRoutes;
 
@@ -99,6 +99,17 @@ public abstract class Point implements Serializable {
 	public Point(Integer id, double x, double y) {
 		this();
 		this.id = id;
+		this.x = x;
+		this.y = y;
+	}
+
+	/**
+	 * Constructeur par données.
+	 * @param x TODO
+	 * @param y TODO
+	 */
+	public Point(double x, double y) {
+		this();
 		this.x = x;
 		this.y = y;
 	}
