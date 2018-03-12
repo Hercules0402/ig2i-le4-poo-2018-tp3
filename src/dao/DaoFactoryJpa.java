@@ -8,27 +8,27 @@ public class DaoFactoryJpa extends DaoFactory {
 
 	@Override
 	public DepotDao getDepotDao() {
-        return JpaDepotDao.getInstance();
-    }
+		return JpaDepotDao.getInstance();
+	}
 
 	@Override
-    public ClientDao getClientDao() {
-        return JpaClientDao.getInstance();
-    }
+	public ClientDao getClientDao() {
+		return JpaClientDao.getInstance();
+	}
 
 	@Override
-    public RouteDao getRouteDao() {
-        return JpaRouteDao.getInstance();
-    }
+	public RouteDao getRouteDao() {
+		return JpaRouteDao.getInstance();
+	}
 
 	@Override
-    public VehiculeDao getVehiculeDao() {
-        return JpaVehiculeDao.getInstance();
-    }
+	public VehiculeDao getVehiculeDao() {
+	return JpaVehiculeDao.getInstance();
+	}
 
 	@Override
-    public PlanningDao getPlanningDao() {
-        return JpaPlanningDao.getInstance();
-    }
+	public PlanningDao getPlanningDao() {
+		return JpaPlanningDao.getInstance();
+	}
 
 }

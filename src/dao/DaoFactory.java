@@ -12,11 +12,11 @@ public abstract class DaoFactory {
 	 * @return DaoFactory
 	 */
 	public static DaoFactory getDaoFactory (PersistenceType type) {
-        if (type.equals(PersistenceType.JPA)) {
-            return new DaoFactoryJpa();
-        }
-        return null;
-    }
+		if (type.equals(PersistenceType.JPA)) {
+			return new DaoFactoryJpa();
+		}
+		return null;
+	}
 
 	/**
 	 * Retourne un DepotDao.
@@ -24,25 +24,25 @@ public abstract class DaoFactory {
 	 */
 	public abstract DepotDao getDepotDao();
 
-    /**
+	/**
 	 * Retourne un ClientDao.
 	 * @return ClientDao
 	 */
 	public abstract ClientDao getClientDao();
 
-    /**
+	/**
 	 * Retourne un RouteDao.
 	 * @return RouteDao
 	 */
 	public abstract RouteDao getRouteDao();
 
-    /**
+	/**
 	 * Retourne un VehiculeDao.
 	 * @return VehiculeDao
 	 */
 	public abstract VehiculeDao getVehiculeDao();
- 
-    /**
+
+	/**
 	 * Retourne un PlanningDao.
 	 * @return PlanningDao
 	 */

@@ -1,7 +1,7 @@
 package dao;
 
 /**
- * Représente une énumération de type
+ * Représente une énumération de type.
  * @author user
  */
 public enum PersistenceType {
