@@ -9,11 +9,20 @@ import metier.Depot;
  */
 public class JpaDepotDao extends JpaDao<Depot> implements DepotDao {
 
+	private static JpaDepotDao instance;
+
 	/**
 	 * Constrcuteur par défault.
 	 */
-	public JpaDepotDao() {
+	private JpaDepotDao() {
 		super(Depot.class);
+	}
+
+	public static JpaDepotDao getInstance() {
+		if (instance == null) {
+			instance = new JpaDepotDao();
+		}
+		return instance;
 	}
 
 	@Override

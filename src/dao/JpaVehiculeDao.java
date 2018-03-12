@@ -12,11 +12,20 @@ import metier.Vehicule;
  */
 public class JpaVehiculeDao extends JpaDao<Vehicule> implements VehiculeDao {
 
+	private static JpaVehiculeDao instance;
+
 	/**
 	 * Constrcuteur par défault.
 	 */
-	public JpaVehiculeDao() {
+	private JpaVehiculeDao() {
 		super(Vehicule.class);
+	}
+
+	public static JpaVehiculeDao getInstance() {
+		if (instance == null) {
+			instance = new JpaVehiculeDao();
+		}
+		return instance;
 	}
 
 	@Override

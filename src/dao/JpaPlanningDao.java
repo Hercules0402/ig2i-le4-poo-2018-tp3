@@ -9,11 +9,20 @@ import metier.Planning;
  */
 public class JpaPlanningDao extends JpaDao<Planning> implements PlanningDao {
 
+	private static JpaPlanningDao instance;
+
 	/**
 	 * Constrcuteur par défault.
 	 */
-	public JpaPlanningDao() {
+	private JpaPlanningDao() {
 		super(Planning.class);
+	}
+
+	public static JpaPlanningDao getInstance() {
+		if (instance == null) {
+			instance = new JpaPlanningDao();
+		}
+		return instance;
 	}
 
 	@Override

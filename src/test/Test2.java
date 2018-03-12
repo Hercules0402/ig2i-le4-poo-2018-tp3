@@ -28,13 +28,15 @@ public class Test2 {
 	public static void main(String[] args) {
 		// TODO code application logic here
 		Depot d = new Depot(0, 0);
-		DepotDao depotManager = new JpaDepotDao();
+		//DepotDao depotManager = new JpaDepotDao();
+		DepotDao depotManager = JpaDepotDao.getInstance();
 		depotManager.deleteAll();
 		depotManager.create(d);
 		Client c1 = new Client(10, 10, 10);
 		Client c2 = new Client(-10, 10, 5);
 		Client c3 = new Client(10, -10, 10);
-		ClientDao clientManager = new JpaClientDao();
+		//ClientDao clientManager = new JpaClientDao();
+		ClientDao clientManager = JpaClientDao.getInstance();
 		clientManager.deleteAll();
 		clientManager.create(c1);
 		clientManager.create(c2);
@@ -57,11 +59,13 @@ public class Test2 {
 		clientManager.update(c3);
 		Vehicule v1 = new Vehicule(d, 15);
 		Vehicule v2 = new Vehicule(d, 15);
-		VehiculeDao vehiculeManager = new JpaVehiculeDao();
+		//VehiculeDao vehiculeManager = new JpaVehiculeDao();
+		VehiculeDao vehiculeManager = JpaVehiculeDao.getInstance();
 		vehiculeManager.create(v1);
 		vehiculeManager.create(v2);
 		Planning p = new Planning();
-		PlanningDao planningManager = new JpaPlanningDao();
+		//PlanningDao planningManager = new JpaPlanningDao();
+		PlanningDao planningManager = JpaPlanningDao.getInstance();
 		vehiculeManager.deleteAll();
 		planningManager.deleteAll();
 		p.addVehicule(v1);
@@ -82,7 +86,8 @@ public class Test2 {
 		clientManager.update(c3);
 		System.out.println(p.toString());
 
-		ClientDao clientManager2 = new JpaClientDao();
+		//ClientDao clientManager2 = new JpaClientDao();
+		ClientDao clientManager2 = JpaClientDao.getInstance();
 		clientManager2.create(c1);
 		System.out.println(clientManager.findAll().size());
 	}

@@ -12,11 +12,20 @@ import metier.Client;
  */
 public class JpaClientDao extends JpaDao<Client> implements ClientDao {
 
+	private static JpaClientDao instance;
+
 	/**
 	 * Constrcuteur par défault.
 	 */
-	public JpaClientDao() {
+	private JpaClientDao() {
 		super(Client.class);
+	}
+
+	public static JpaClientDao getInstance() {
+		if (instance == null) {
+			instance = new JpaClientDao();
+		}
+		return instance;
 	}
 
 	@Override
