@@ -18,6 +18,10 @@ public class JpaRouteDao extends JpaDao<Route> implements RouteDao {
 		super(Route.class);
 	}
 
+	/**
+	 * Retourne une instance de JpaRouteDao.
+	 * @return JpaRouteDao
+	 */
 	public static JpaRouteDao getInstance() {
 		if (instance == null) {
 			instance = new JpaRouteDao();

@@ -18,6 +18,10 @@ public class JpaPlanningDao extends JpaDao<Planning> implements PlanningDao {
 		super(Planning.class);
 	}
 
+	/**
+	 * Retourne une instance de JpaPlanningDao.
+	 * @return JpaPlanningDao
+	 */
 	public static JpaPlanningDao getInstance() {
 		if (instance == null) {
 			instance = new JpaPlanningDao();

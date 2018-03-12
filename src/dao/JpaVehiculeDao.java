@@ -21,6 +21,10 @@ public class JpaVehiculeDao extends JpaDao<Vehicule> implements VehiculeDao {
 		super(Vehicule.class);
 	}
 
+	/**
+	 * Retourne une instance de JpaVehiculeDao.
+	 * @return JpaVehiculeDao
+	 */
 	public static JpaVehiculeDao getInstance() {
 		if (instance == null) {
 			instance = new JpaVehiculeDao();
