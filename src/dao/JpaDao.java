@@ -21,8 +21,9 @@ public abstract class JpaDao<T> implements DAO<T> {
 
 	protected EntityManager em;
 
+	//CHECKSTYLE:OFF: ModifierOrderCheck
 	protected final static String PERSISTENCE_UNIT = "ig2i-le4-poo-2018-tp3PU";
-
+	//CHECKSTYLE:ON
 	protected Class<T> entite;
 
 	/**
@@ -44,7 +45,7 @@ public abstract class JpaDao<T> implements DAO<T> {
 			em.persist(obj);
 			et.commit();
 		}
-		catch(Exception e) {
+		catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -61,7 +62,7 @@ public abstract class JpaDao<T> implements DAO<T> {
 			em.merge(obj);
 			et.commit();
 		}
-		catch(Exception e) {
+		catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -78,7 +79,7 @@ public abstract class JpaDao<T> implements DAO<T> {
 			em.remove(obj);
 			et.commit();
 		}
-		catch(Exception e) {
+		catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}

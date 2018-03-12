@@ -7,8 +7,9 @@ import java.util.Collection;
  * @author user
  * @param <T> TODO
  */
+//CHECKSTYLE:OFF: AbbreviationAsWordInNameCheck
 public interface DAO<T> {
-
+//CHECKSTYLE:ON
 	/**
 	 * Méthode permettant de créer un objet.
 	 * @param obj TODO
