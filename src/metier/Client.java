@@ -2,6 +2,7 @@ package metier;
 
 import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,11 +25,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 		@NamedQuery(name = "Client.findByDemand",
 			query = "SELECT c FROM Client c WHERE c.demand = :demand"),
 		@NamedQuery(name = "Client.findByPosition",
-			query = "SELECT c FROM Client c WHERE c.position = :position"),
-		@NamedQuery(name = "Client.findByNpoint",
-			query = "SELECT c FROM Client c WHERE c.npoint = :npoint")
+			query = "SELECT c FROM Client c WHERE c.position = :position")
 })
-
+@DiscriminatorValue("2")
 public class Client extends Point implements Serializable {
 
 	@Column(name = "DEMAND")
@@ -36,10 +35,6 @@ public class Client extends Point implements Serializable {
 
 	@Column(name = "POSITION")
 	private int position;
-
-	@JoinColumn(name = "NPOINT", referencedColumnName = "ID", insertable = false, updatable = false)
-	@OneToOne(optional = false)
-	private Point point;
 
 	@JoinColumn(name = "NVEHICULE", referencedColumnName = "ID")
 	@ManyToOne

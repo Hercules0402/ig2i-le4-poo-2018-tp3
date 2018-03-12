@@ -45,7 +45,7 @@ public abstract class JpaDao<T> implements DAO<T>{
             et.commit();
         }
         catch(Exception e) {
-            System.err.println(e.getMessage());
+            e.printStackTrace();			
             return false;
         }
 
@@ -62,7 +62,7 @@ public abstract class JpaDao<T> implements DAO<T>{
             et.commit();
         }
         catch(Exception e) {
-            System.err.println(e.getMessage());
+            e.printStackTrace();
             return false;
         }
 
@@ -79,7 +79,7 @@ public abstract class JpaDao<T> implements DAO<T>{
             et.commit();
         }
         catch(Exception e) {
-            System.err.println(e.getMessage());
+            e.printStackTrace();
             return false;
         }
 
@@ -119,7 +119,7 @@ public abstract class JpaDao<T> implements DAO<T>{
 			int nbDelete = em.createQuery(cd).executeUpdate();
 		}
 		catch (Exception e){
-			System.err.println(e.getMessage());
+			e.printStackTrace();
 			return false;
 		}
 		

@@ -69,7 +69,7 @@ public abstract class Point implements Serializable {
 	private double y;
 	//CHECKSTYLE:ON
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ndepart")
 	@MapKey(name = "narrivee")
 	private Map<Integer,Route> ensRoutes;
 
