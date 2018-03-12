@@ -7,7 +7,7 @@ import metier.Vehicule;
  * Interface générique représentant un DAO de type Vehicule.
  * @author user
  */
-public interface VehiculeDao extends DAO<Vehicule>{
+public interface VehiculeDao extends DAO<Vehicule> {
 
 	/**
 	 * Méthode permettant de renvoyer toutes les véhicules non encore utilisés

@@ -63,7 +63,7 @@ public class Test2 {
 		clientManager.update(c2);
 		clientManager.update(c3);
 		System.out.println(p.toString());
-		
+
 		ClientDao clientManager2 = new JpaClientDao();
 		clientManager2.create(c1);
 		System.out.println(clientManager.findAll().size());

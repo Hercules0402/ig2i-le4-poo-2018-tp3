@@ -3,7 +3,7 @@ package dao;
 import java.util.Collection;
 
 /**
- * Interface générique représentant un DAO. 
+ * Interface générique représentant un DAO.
  * @author user
  * @param <T> TODO
  */
@@ -33,7 +33,7 @@ public interface DAO<T> {
 	 * Méthode permettant de mettre à jour un objet.
 	 * @param obj TODO
 	 * @return boolean
-	 */	
+	 */
 	public boolean update(T obj);
 
 	/**
@@ -44,7 +44,7 @@ public interface DAO<T> {
 	public boolean delete(T obj);
 
 	/**
-	 * Méthode permettant de supprimer un ensemble d'objet. 
+	 * Méthode permettant de supprimer un ensemble d'objet.
 	 * @return boolean
 	 */
 	public boolean deleteAll();

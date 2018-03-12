@@ -13,7 +13,7 @@ import metier.Client;
 public class JpaClientDao extends JpaDao<Client> implements ClientDao {
 
 	/**
-	 * Constructeur par données.
+	 * Constrcuteur par défault.
 	 */
 	public JpaClientDao() {
 		super(Client.class);
@@ -62,5 +62,5 @@ public class JpaClientDao extends JpaDao<Client> implements ClientDao {
 		cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("NVEHICULE")),cb.isNotEmpty(tasks.get("NVEHICULE"))));
 		return super.em.createQuery(cq).getResultList();
 	}
-	
+
 }

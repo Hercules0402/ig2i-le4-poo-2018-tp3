@@ -8,9 +8,9 @@ import metier.Route;
  * @author user
  */
 public class JpaRouteDao extends JpaDao<Route> implements RouteDao {
-	
+
 	/**
-	 * Contructeur par données.
+	 * Constrcuteur par défault.
 	 */
 	public JpaRouteDao() {
 		super(Route.class);
@@ -50,5 +50,5 @@ public class JpaRouteDao extends JpaDao<Route> implements RouteDao {
 	public boolean create(Route obj) {
 		return super.create(obj);
 	}
-	
+
 }

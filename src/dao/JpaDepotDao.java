@@ -10,7 +10,7 @@ import metier.Depot;
 public class JpaDepotDao extends JpaDao<Depot> implements DepotDao {
 
 	/**
-	 * Constructeur par données.
+	 * Constrcuteur par défault.
 	 */
 	public JpaDepotDao() {
 		super(Depot.class);
@@ -50,5 +50,5 @@ public class JpaDepotDao extends JpaDao<Depot> implements DepotDao {
 	public boolean create(Depot obj) {
 		return super.create(obj);
 	}
-	
+
 }

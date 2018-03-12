@@ -13,7 +13,7 @@ import metier.Vehicule;
 public class JpaVehiculeDao extends JpaDao<Vehicule> implements VehiculeDao {
 
 	/**
-	 * Constrcuteur par données 
+	 * Constrcuteur par défault.
 	 */
 	public JpaVehiculeDao() {
 		super(Vehicule.class);
@@ -59,8 +59,9 @@ public class JpaVehiculeDao extends JpaDao<Vehicule> implements VehiculeDao {
 		CriteriaBuilder cb = super.em.getCriteriaBuilder();
 		CriteriaQuery<Vehicule> cq = cb.createQuery(Vehicule.class);
 		Root<Vehicule> tasks = cq.from(Vehicule.class);
-		cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("NPLANNING")),cb.isNotEmpty(tasks.get("NPLANNING"))));
+		cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("NPLANNING")),
+				cb.isNotEmpty(tasks.get("NPLANNING"))));
 		return super.em.createQuery(cq).getResultList();
 	}
-	
+
 }

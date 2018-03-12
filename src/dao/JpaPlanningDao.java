@@ -8,9 +8,9 @@ import metier.Planning;
  * @author user
  */
 public class JpaPlanningDao extends JpaDao<Planning> implements PlanningDao {
-	
+
 	/**
-	 * Constructeur par données.
+	 * Constrcuteur par défault.
 	 */
 	public JpaPlanningDao() {
 		super(Planning.class);
@@ -50,5 +50,5 @@ public class JpaPlanningDao extends JpaDao<Planning> implements PlanningDao {
 	public boolean create(Planning obj) {
 		return super.create(obj);
 	}
-	
+
 }

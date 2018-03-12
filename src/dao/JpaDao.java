@@ -45,7 +45,7 @@ public abstract class JpaDao<T> implements DAO<T>{
             et.commit();
         }
         catch(Exception e) {
-            e.printStackTrace();			
+            e.printStackTrace();
             return false;
         }
 
@@ -125,7 +125,7 @@ public abstract class JpaDao<T> implements DAO<T>{
 			e.printStackTrace();
 			return false;
 		}
-		
+
 		return true;
 	}
 

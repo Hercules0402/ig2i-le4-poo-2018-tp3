@@ -7,5 +7,5 @@ import metier.Depot;
  * @author user
  */
 public interface DepotDao extends DAO<Depot>{
-	
+
 }
