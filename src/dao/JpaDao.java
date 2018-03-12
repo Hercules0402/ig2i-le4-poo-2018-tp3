@@ -113,10 +113,13 @@ public abstract class JpaDao<T> implements DAO<T>{
 
 	@Override
 	public boolean deleteAll() {
+		EntityTransaction et = this.em.getTransaction();
 		try {
 			CriteriaBuilder cb = em.getCriteriaBuilder();
 			CriteriaDelete<T> cd = cb.createCriteriaDelete(this.entite);
+			et.begin();
 			int nbDelete = em.createQuery(cd).executeUpdate();
+			et.commit();
 		}
 		catch (Exception e){
 			e.printStackTrace();
