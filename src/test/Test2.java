@@ -90,6 +90,23 @@ public class Test2 {
 		ClientDao clientManager2 = JpaClientDao.getInstance();
 		clientManager2.create(c1);
 		System.out.println(clientManager.findAll().size());
+
+		// Question 25
+		/*Planning p = new Planning();
+		Vehicule v1 = new Vehicule();
+		Vehicule v2 = new Vehicule();
+		PlanningDao planningManager = JpaPlanningDao.getInstance();
+		VehiculeDao vehiculeManager = JpaVehiculeDao.getInstance();
+		planningManager.deleteAll();
+		vehiculeManager.deleteAll();
+		vehiculeManager.create(v1);
+		vehiculeManager.create(v2);
+		p.addVehicule(v1);
+		p.addVehicule(v2);
+		planningManager.create(p);
+		for	(Vehicule v : vehiculeManager.findAll()) {
+			System.out.println(v);
+		}*/
 	}
 
 }
